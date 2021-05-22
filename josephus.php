@@ -1,22 +1,34 @@
 <?php
-function josephus($n, $k)
+
+// Como base https://youtu.be/85dS11fQKX0?t=296
+
+function MariorPorenciaDe2($n)
 {
-    if ($n === 1) {
-        return 1;
-    } else {
-        //função recursiva para eliminar 1 soldado por vez
-        return (josephus($n - 1, $k) + $k - 1) % $n + 1;
+    //variavel auxiliar
+    $aux = 0;
+
+    //utilizando for para adicionar +1 a $i 
+    for ($i = 1;; $i++) {
+
+        //variavel auxiliar recebe a resposta da potencida de 2 ^ $i
+        $aux = pow(2, $i);
+
+        //se identificar que a resposta da portancia de 2 é maior que o valor de N
+        if ($aux > $n)
+
+            //retorna o FOR anterior = 2 ^ ($i - 1)
+            return pow(2, $i - 1);
     }
 }
 
-//Declaração dos naturais
-$n = 2021;
-$k = 2;
+function resolucao($n)
+{
+    //Notando que a melhor forma de resolver o problema é tirar a maior potendia de 2 de dentro do N
+    $mortes_necessarias = $n - MariorPorenciaDe2($n);
+    //assim conseguimos saber que a posição segura é (quantidade de mortes necessárias * 2) + 1
+    //utilizamos o * 2, pois sabemos que na primeira partida todos os números pares morrem
+    $posicao_segura = ($mortes_necessarias * 2) + 1;
+    return $posicao_segura;
+}
 
-/*
-$k = 1; soldado se mata
-$k = 2; soldado mata quem está ao lado
-$k = 3; soldado mata segunda pessoa que está ao lado
-*/
-
-echo "O soldado " . josephus($n, $k) . " ficou vivo.";
+echo "O soldado " . resolucao(6) . " ficou vivo.";
