@@ -24,15 +24,15 @@ function MariorPorenciaDe2($n)
 function resolucao($n)
 {
     if ($n == 1) {
+        return 1;
+    } else {
         //Notando que a melhor forma de resolver o problema é tirar a maior potendia de 2 de dentro do N
         $mortes_necessarias = $n - MariorPorenciaDe2($n);
         //assim conseguimos saber que a posição segura é (quantidade de mortes necessárias * 2) + 1
         //utilizamos o * 2, pois sabemos que na primeira partida todos os números pares morrem
         $posicao_segura = ($mortes_necessarias * 2) + 1;
         return $posicao_segura;
-    } else {
-        return 1;
     }
 }
 
-echo "O soldado " . resolucao(6) . " ficou vivo.";
+echo "O soldado " . resolucao(1) . " ficou vivo.";
