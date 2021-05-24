@@ -35,4 +35,4 @@ function resolucao($n)
     }
 }
 
-echo "O soldado " . resolucao(1) . " ficou vivo.";
+echo "O soldado " . resolucao(7) . " ficou vivo.";
